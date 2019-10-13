@@ -1,4 +1,17 @@
-- repo: https://github.com/prettier/prettier
-  rev: "master"
-  hooks:
-    - id: prettier
+repos:
+  - repo: https://github.com/prettier/prettier
+    rev: "master"
+    hooks:
+      - id: prettier
+  - repo: https://github.com/python/black
+    rev: ae5588cf073be10b51dc48ad2fc513e11c4f3e03
+    hooks:
+      - id: black
+        args: [-l 79]
+  - repo: local
+    hooks:
+      - id: commit-check
+        name: Check commit message
+        stages: [commit-msg, prepare-commit-msg]
+        entry: "bin/check_commit_message.py"
+        language: script
