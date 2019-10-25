@@ -8,10 +8,8 @@ repos:
     hooks:
       - id: black
         args: [-l 79]
-  - repo: local
+  - repo: https://github.com/thg-consulting/whithercanada
+    rev: 1dc71abeafc8bfdeb80b1ed820d408c12e06c04a
     hooks:
-      - id: commit-check
-        name: Check commit message
-        stages: [commit-msg, prepare-commit-msg]
-        entry: "bin/check_commit_message.py"
-        language: script
+      - id: check_commit_message
+        stages: [prepare-commit-msg]
